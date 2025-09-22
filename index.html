@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae M. Irwansyah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ADD8E6 0%, #E0FFFF 100%);
+            color: #1a202c;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container-cv {
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease-in-out;
+        }
+        @media (min-width: 768px) {
+            .container-cv {
+                flex-direction: row;
+            }
+        }
+        .left-panel {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .right-panel {
+            flex: 2;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 1.5rem;
+            margin-left: 0;
+        }
+        @media (min-width: 768px) {
+            .left-panel {
+                margin-bottom: 0;
+            }
+            .right-panel {
+                margin-left: 1.5rem;
+            }
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(26, 32, 44, 0.5);
+            padding-bottom: 0.5rem;
+        }
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #4682B4;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .profile-picture:hover {
+            transform: scale(1.1);
+        }
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #4682B4;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4682B4;
+        }
+        .stat-bar {
+            height: 12px;
+            background-color: rgba(26, 32, 44, 0.2);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+        .stat-fill {
+            height: 100%;
+            background-color: #4682B4;
+            border-radius: 6px;
+            transition: width 1s ease-in-out;
+        }
+        .motto-section {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 1.5rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 250px;
+            }
+        }
+        [dir="rtl"] .section-title {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        [dir="rtl"] .section-title::before {
+            left: auto;
+            right: 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="flex justify-end mb-4">
+        <div class="text-sm font-semibold mr-2 opacity-80" data-key="language_selector_label">Pilih Bahasa:</div>
+        <select id="language-select" class="rounded-lg p-1 text-sm bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="id">Bahasa Indonesia</option>
+            <option value="en">English</option>
+            <option value="jv">Basa Jawa</option>
+            <option value="ar">العربية</option>
+        </select>
+    </div>
+
+    <div class="container-cv">
+
+        <!-- Bagian Kiri -->
+        <div class="left-panel">
+            <div class="flex flex-col items-center mb-6">
+                <img src="wan.png" alt="Foto Profil" class="profile-picture">
+                <h1 class="text-3xl font-bold mt-4">M. Irwansyah</h1>
+                <p class="text-lg opacity-80" data-key="occupation">XI TKJ 1 - Teknik Komputer & Jaringan</p>
+            </div>
+
+            <!-- Keterampilan dan Minat -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="skills_interests_title">Keterampilan & Minat</h2>
+                <h3 class="font-semibold mb-2" data-key="skills_title">Keterampilan</h3>
+                <p class="text-sm opacity-90" data-key="skill_1">Membuat kerajinan</p>
+                <h3 class="font-semibold mb-2 mt-4" data-key="interests_title">Minat</h3>
+                <ul class="list-disc list-inside text-sm opacity-90" data-key="interests_list">
+                    <li>Elektronika</li>
+                    <li>Permainan Daring (Gaming)</li>
+                    <li>Musik</li>
+                    <li>Olahraga (Bermain Bola)</li>
+                    <li>Jelajah (Traveling)</li>
+                </ul>
+            </div>
+
+            <!-- Motto Hidup -->
+            <div class="motto-section">
+                <h2 class="section-title mb-2" data-key="motto_title">Motto Hidup</h2>
+                <p class="text-sm opacity-90" data-key="motto_text">
+                    "Hidup adalah proses belajar, maka teruslah melangkah dan berani bermimpi, karena kesuksesan datang dari tekad yang kuat, bukan hanya keberuntungan."
+                </p>
+            </div>
+
+            <!-- Cita-cita -->
+            <div class="mb-6 mt-6">
+                <h2 class="section-title" data-key="ambition_title">Cita-cita</h2>
+                <p class="text-sm opacity-90" data-key="ambition_text">
+                    Ingin membahagiakan orang tua dan membuka lapangan pekerjaan.
+                </p>
+            </div>
+
+            <!-- Kontak -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="contact_title">Kontak</h2>
+                <ul class="text-sm space-y-2 opacity-90">
+                    <li><span class="font-semibold" data-key="contact_email_label">Email:</span> wan18@gmail.com</li>
+                    <li><span class="font-semibold" data-key="contact_phone_label">Telepon:</span> 0843xxxxxx</li>
+                    <li><span class="font-semibold" data-key="contact_tiktok_label">TikTok:</span> @wannn19101</li>
+                    <li><span class="font-semibold" data-key="contact_ig_label">Instagram:</span> @wan1910271</li>
+                </ul>
+            </div>
+
+            <!-- Statistik Keterampilan -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="skill_stats_title">Statistik Keterampilan</h2>
+                <div class="space-y-4 text-sm opacity-90">
+                    <div>
+                        <span class="font-semibold" data-key="skill_stats_1">Elektronika</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div>
+                        <span class="font-semibold" data-key="skill_stats_2">Bermain Game</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div>
+                        <span class="font-semibold" data-key="skill_stats_3">Bahasa Indonesia</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div>
+                        <span class="font-semibold" data-key="skill_stats_4">Disiplin</span>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 85%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bagian Kanan -->
+        <div class="right-panel">
+            <!-- Profil Singkat -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="profile_title">Profil</h2>
+                <p class="text-sm opacity-90" data-key="profile_text">
+                    Saya memiliki minat di bidang IT, khususnya Teknik Komputer & Jaringan. Memiliki dasar perakitan komputer, jaringan LAN, dan pemecahan masalah (troubleshooting) perangkat.
+                </p>
+            </div>
+
+            <!-- Identitas -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="identity_title">Identitas</h2>
+                <ul class="text-sm space-y-2 opacity-90">
+                    <li><span class="font-semibold" data-key="identity_name_label">Nama:</span> M. Irwansyah</li>
+                    <li><span class="font-semibold" data-key="identity_dob_label">Tempat/Tgl Lahir:</span> Pekalongan, 19 Oktober 2007</li>
+                    <li><span class="font-semibold" data-key="identity_religion_label">Agama:</span> Islam</li>
+                    <li><span class="font-semibold" data-key="identity_address_label">Alamat:</span> Karanganyar Dukuh Pulo RT 2 RW 3, No. 7</li>
+                    <li><span class="font-semibold" data-key="identity_email_label">Email:</span> wan@gmail.com</li>
+                    <li><span class="font-semibold" data-key="identity_phone_label">Telepon:</span> 0843xxxxxx</li>
+                </ul>
+            </div>
+
+            <!-- Riwayat Pendidikan -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="education_title">Riwayat Pendidikan</h2>
+                <ul class="list-disc list-inside space-y-2 text-sm opacity-90">
+                    <li><span class="font-semibold" data-key="edu_1_year">2014 – 2021:</span> <span data-key="edu_1_school">MIS Salafiyah NU Karanganyar</span></li>
+                    <li><span class="font-semibold" data-key="edu_2_year">2021 – 2024:</span> <span data-key="edu_2_school">MTs Salafiyah NU Karanganyar</span></li>
+                    <li><span class="font-semibold" data-key="edu_3_year">2024 – 2027:</span> <span data-key="edu_3_school">SMK Ma’arif NU Tirto</span></li>
+                </ul>
+            </div>
+
+            <!-- Harapan & Masa Depan -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="future_hopes_title">Harapan & Masa Depan</h2>
+                <p class="text-sm opacity-90" data-key="future_hopes_text">
+                    Membangun usaha dan membuka lapangan kerja bagi orang lain.
+                </p>
+            </div>
+
+            <!-- Prestasi -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="achievements_title">Prestasi</h2>
+                <ul class="list-disc list-inside text-sm opacity-90">
+                    <li data-key="achievement_1">Juara 3 Lomba Kemerdekaan</li>
+                </ul>
+            </div>
+
+            <!-- Organisasi -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="organizations_title">Organisasi</h2>
+                <p class="text-sm italic opacity-90" data-key="organizations_text">Belum ada pengalaman organisasi.</p>
+            </div>
+
+            <!-- Diagram Minat -->
+            <div class="mb-6">
+                <h2 class="section-title" data-key="interest_diagram_title">Diagram Minat</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Diagram Lingkaran -->
+                    <div class="chart-container flex justify-center items-center p-2">
+                        <canvas id="minatPieChart"></canvas>
+                    </div>
+                    <!-- Diagram Batang -->
+                    <div class="chart-container flex justify-center items-center p-2">
+                        <canvas id="minatBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let pieChartInstance, barChartInstance;
+            
+            const translations = {
+                'id': {
+                    language_selector_label: 'Pilih Bahasa:',
+                    occupation: 'XI TKJ 1 - Teknik Komputer & Jaringan',
+                    skills_interests_title: 'Keterampilan & Minat',
+                    skills_title: 'Keterampilan',
+                    skill_1: 'Membuat kerajinan',
+                    interests_title: 'Minat',
+                    interests_list: [
+                        'Elektronika',
+                        'Permainan Daring (Gaming)',
+                        'Musik',
+                        'Olahraga (Bermain Bola)',
+                        'Jelajah (Traveling)'
+                    ],
+                    motto_title: 'Motto Hidup',
+                    motto_text: '"Hidup adalah proses belajar, maka teruslah melangkah dan berani bermimpi, karena kesuksesan datang dari tekad yang kuat, bukan hanya keberuntungan."',
+                    ambition_title: 'Cita-cita',
+                    ambition_text: 'Ingin membahagiakan orang tua dan membuka lapangan pekerjaan.',
+                    contact_title: 'Kontak',
+                    contact_email_label: 'Email:',
+                    contact_phone_label: 'Telepon:',
+                    contact_tiktok_label: 'TikTok:',
+                    contact_ig_label: 'Instagram:',
+                    skill_stats_title: 'Statistik Keterampilan',
+                    skill_stats_1: 'Elektronika',
+                    skill_stats_2: 'Bermain Game',
+                    skill_stats_3: 'Bahasa Indonesia',
+                    skill_stats_4: 'Disiplin',
+                    profile_title: 'Profil',
+                    profile_text: 'Saya memiliki minat di bidang IT, khususnya Teknik Komputer & Jaringan. Memiliki dasar perakitan komputer, jaringan LAN, dan pemecahan masalah (troubleshooting) perangkat.',
+                    identity_title: 'Identitas',
+                    identity_name_label: 'Nama:',
+                    identity_dob_label: 'Tempat/Tgl Lahir:',
+                    identity_religion_label: 'Agama:',
+                    identity_address_label: 'Alamat:',
+                    identity_email_label: 'Email:',
+                    identity_phone_label: 'Telepon:',
+                    education_title: 'Riwayat Pendidikan',
+                    edu_1_school: 'MIS Salafiyah NU Karanganyar',
+                    edu_2_school: 'MTs Salafiyah NU Karanganyar',
+                    edu_3_school: 'SMK Ma’arif NU Tirto',
+                    future_hopes_title: 'Harapan & Masa Depan',
+                    future_hopes_text: 'Membangun usaha dan membuka lapangan kerja bagi orang lain.',
+                    achievements_title: 'Prestasi',
+                    achievement_1: 'Juara 3 Lomba Kemerdekaan',
+                    organizations_title: 'Organisasi',
+                    organizations_text: 'Belum ada pengalaman organisasi.',
+                    chart_labels: ['Elektronika', 'Game', 'Musik', 'Olahraga']
+                },
+                'en': {
+                    language_selector_label: 'Choose Language:',
+                    occupation: 'Student, Network Developer',
+                    skills_interests_title: 'Skills & Interests',
+                    skills_title: 'Skills',
+                    skill_1: 'Crafting',
+                    interests_title: 'Interests',
+                    interests_list: [
+                        'Electronics',
+                        'Gaming',
+                        'Music',
+                        'Sports (Playing Soccer)',
+                        'Traveling'
+                    ],
+                    motto_title: 'Life Motto',
+                    motto_text: '"Life is a learning process, so keep moving forward and dare to dream, because success comes from strong determination, not just luck."',
+                    ambition_title: 'Ambition',
+                    ambition_text: 'To make my parents happy and create job opportunities.',
+                    contact_title: 'Contact',
+                    contact_email_label: 'Email:',
+                    contact_phone_label: 'Phone:',
+                    contact_tiktok_label: 'TikTok:',
+                    contact_ig_label: 'Instagram:',
+                    skill_stats_title: 'Skill Statistics',
+                    skill_stats_1: 'Electronics',
+                    skill_stats_2: 'Gaming',
+                    skill_stats_3: 'Indonesian Language',
+                    skill_stats_4: 'Discipline',
+                    profile_title: 'Profile',
+                    profile_text: 'I have an interest in IT, especially Computer and Network Engineering. I have a basic understanding of computer assembly, LAN networking, and device troubleshooting.',
+                    identity_title: 'Identity',
+                    identity_name_label: 'Name:',
+                    identity_dob_label: 'Place/Date of Birth:',
+                    identity_religion_label: 'Religion:',
+                    identity_address_label: 'Address:',
+                    identity_email_label: 'Email:',
+                    identity_phone_label: 'Phone:',
+                    education_title: 'Education History',
+                    edu_1_school: 'MIS Salafiyah NU Karanganyar',
+                    edu_2_school: 'MTs Salafiyah NU Karanganyar',
+                    edu_3_school: 'SMK Ma’arif NU Tirto',
+                    future_hopes_title: 'Hopes & Future',
+                    future_hopes_text: 'To build a business and create job opportunities for others.',
+                    achievements_title: 'Achievements',
+                    achievement_1: '3rd Place in Independence Day Competition',
+                    organizations_title: 'Organizations',
+                    organizations_text: 'No organizational experience yet.',
+                    chart_labels: ['Electronics', 'Game', 'Music', 'Sports']
+                },
+                'jv': {
+                    language_selector_label: 'Pilih Basa:',
+                    occupation: 'Murid, Pangembang Jaringan',
+                    skills_interests_title: 'Keterampilan & Kapentingan',
+                    skills_title: 'Keterampilan',
+                    skill_1: 'Nggawe kerajinan',
+                    interests_title: 'Kapentingan',
+                    interests_list: [
+                        'Elektronika',
+                        'Dolan Game Online',
+                        'Musik',
+                        'Olahraga (Dolan Bal-balan)',
+                        'Jelajah (Traveling)'
+                    ],
+                    motto_title: 'Motto Urip',
+                    motto_text: '"Urip iku proses sinau, mula terus maju lan wani ngimpi, amarga kasuksesan teka saka tekad sing kuwat, dudu mung bejo."',
+                    ambition_title: 'Cita-cita',
+                    ambition_text: 'Pengin mbahagiake wong tuwa lan mbukak lapangan kerja.',
+                    contact_title: 'Kontak',
+                    contact_email_label: 'Email:',
+                    contact_phone_label: 'Telpon:',
+                    contact_tiktok_label: 'TikTok:',
+                    contact_ig_label: 'Instagram:',
+                    skill_stats_title: 'Statistik Keterampilan',
+                    skill_stats_1: 'Elektronika',
+                    skill_stats_2: 'Dolan Game',
+                    skill_stats_3: 'Basa Indonesia',
+                    skill_stats_4: 'Disiplin',
+                    profile_title: 'Profil',
+                    profile_text: 'Kula kagungan minat ing bidang IT, mligine Teknik Komputer & Jaringan. Kagungan dhasar perakitan komputer, jaringan LAN, lan ngatasi masalah (troubleshooting) piranti.',
+                    identity_title: 'Identitas',
+                    identity_name_label: 'Asma:',
+                    identity_dob_label: 'Papan/Tanggal Lair:',
+                    identity_religion_label: 'Agama:',
+                    identity_address_label: 'Alamat:',
+                    identity_email_label: 'Email:',
+                    identity_phone_label: 'Telpon:',
+                    education_title: 'Riwayat Pendidikan',
+                    edu_1_school: 'MIS Salafiyah NU Karanganyar',
+                    edu_2_school: 'MTs Salafiyah NU Karanganyar',
+                    edu_3_school: 'SMK Ma’arif NU Tirto',
+                    future_hopes_title: 'Pangajeng-ajeng & Masa Ngarep',
+                    future_hopes_text: 'Mbangun usaha lan mbukak lapangan kerja kanggo wong liya.',
+                    achievements_title: 'Prestasi',
+                    achievement_1: 'Juara 3 Lomba Kemerdekaan',
+                    organizations_title: 'Organisasi',
+                    organizations_text: 'Dèrèng wonten pengalaman organisasi.',
+                    chart_labels: ['Elektronika', 'Game', 'Musik', 'Olahraga']
+                },
+                'ar': {
+                    language_selector_label: 'اختر اللغة:',
+                    occupation: 'طالب، مطور شبكات',
+                    skills_interests_title: 'المهارات والاهتمامات',
+                    skills_title: 'المهارات',
+                    skill_1: 'صناعة الحرف اليدوية',
+                    interests_title: 'الاهتمامات',
+                    interests_list: [
+                        'الإلكترونيات',
+                        'ألعاب الفيديو',
+                        'الموسيقى',
+                        'الرياضة (لعب كرة القدم)',
+                        'السفر'
+                    ],
+                    motto_title: 'شعار الحياة',
+                    motto_text: '"الحياة عملية تعلم مستمرة، لذا استمر في التقدم وتجرأ على الحلم، لأن النجاح يأتي من العزيمة القوية، وليس فقط من الحظ."',
+                    ambition_title: 'الطموح',
+                    ambition_text: 'إسعاد والدي وفتح فرص عمل.',
+                    contact_title: 'الاتصال',
+                    contact_email_label: 'البريد الإلكتروني:',
+                    contact_phone_label: 'الهاتف:',
+                    contact_tiktok_label: 'تيك توك:',
+                    contact_ig_label: 'إنستغرام:',
+                    skill_stats_title: 'إحصائيات المهارات',
+                    skill_stats_1: 'الإلكترونيات',
+                    skill_stats_2: 'ألعاب الفيديو',
+                    skill_stats_3: 'اللغة الإندونيسية',
+                    skill_stats_4: 'الانضباط',
+                    profile_title: 'الملف الشخصي',
+                    profile_text: 'لدي اهتمام بمجال تكنولوجيا المعلومات، وخاصة هندسة الحاسوب والشبكات. لدي فهم أساسي لتجميع الحاسوب، وشبكات LAN، واستكشاف الأخطاء وإصلاحها في الأجهزة.',
+                    identity_title: 'الهوية',
+                    identity_name_label: 'الاسم:',
+                    identity_dob_label: 'مكان/تاريخ الميلاد:',
+                    identity_religion_label: 'الديانة:',
+                    identity_address_label: 'العنوان:',
+                    identity_email_label: 'البريد الإلكتروني:',
+                    identity_phone_label: 'الهاتف:',
+                    education_title: 'تاريخ التعليم',
+                    edu_1_school: 'مدرسة صلاحية نور كارانجانيا الإندونيسية',
+                    edu_2_school: 'مدرسة صلاحية نور كارانجانيا المتوسطة',
+                    edu_3_school: 'مدرسة معارف نور تيرتو المهنية',
+                    future_hopes_title: 'الآمال والمستقبل',
+                    future_hopes_text: 'بناء عمل تجاري وخلق فرص عمل للآخرين.',
+                    achievements_title: 'الإنجازات',
+                    achievement_1: 'المركز الثالث في مسابقة يوم الاستقلال',
+                    organizations_title: 'المنظمات',
+                    organizations_text: 'لا توجد خبرة تنظيمية حتى الآن.',
+                    chart_labels: ['الإلكترونيات', 'ألعاب الفيديو', 'الموسيقى', 'الرياضة']
+                }
+            };
+
+            const translatePage = (lang) => {
+                document.documentElement.lang = lang;
+                document.body.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+                const elements = document.querySelectorAll('[data-key]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+
+                // Handle list items separately
+                const interestsList = document.querySelector('[data-key="interests_list"]');
+                if (interestsList) {
+                    interestsList.innerHTML = translations[lang].interests_list.map(item => `<li>${item}</li>`).join('');
+                }
+
+                // Update charts
+                const chartLabels = translations[lang].chart_labels;
+                if (pieChartInstance) {
+                    pieChartInstance.data.labels = chartLabels;
+                    pieChartInstance.update();
+                }
+                if (barChartInstance) {
+                    barChartInstance.data.labels = chartLabels;
+                    barChartInstance.update();
+                }
+            };
+            
+            const minatData = {
+                labels: [], // Initial empty labels
+                datasets: [{
+                    data: [35, 25, 20, 20],
+                    backgroundColor: ['#4682B4', '#87CEFA', '#B0E0E6', '#ADD8E6'],
+                    borderColor: 'rgba(26, 32, 44, 0.5)',
+                    borderWidth: 1,
+                    hoverOffset: 4
+                }]
+            };
+
+            const pieChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#1a202c',
+                            font: { size: 12 }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(26, 32, 44, 0.7)',
+                        titleColor: '#F8F9FA',
+                        bodyColor: '#F8F9FA',
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        color: '#1a202c',
+                        font: { weight: 'bold' },
+                        formatter: (value) => `${value}%`
+                    }
+                }
+            };
+            
+            const barChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: 'rgba(26, 32, 44, 0.7)',
+                        titleColor: '#F8F9FA',
+                        bodyColor: '#F8F9FA',
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        color: '#1a202c',
+                        font: { weight: 'bold' },
+                        anchor: 'end',
+                        align: 'end',
+                        formatter: (value) => `${value}%`
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#1a202c' },
+                        grid: { color: 'rgba(26, 32, 44, 0.2)' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#1a202c' },
+                        grid: { color: 'rgba(26, 32, 44, 0.2)' }
+                    }
+                }
+            };
+            
+            // Inisialisasi Chart.js
+            const pieChartCtx = document.getElementById('minatPieChart').getContext('2d');
+            pieChartInstance = new Chart(pieChartCtx, {
+                type: 'pie',
+                data: minatData,
+                options: pieChartOptions,
+                plugins: [ChartDataLabels]
+            });
+
+            const barChartCtx = document.getElementById('minatBarChart').getContext('2d');
+            const barData = {
+                labels: [], // Initial empty labels
+                datasets: [{
+                    label: 'Persentase Minat',
+                    data: minatData.datasets[0].data,
+                    backgroundColor: minatData.datasets[0].backgroundColor,
+                    borderColor: minatData.datasets[0].borderColor,
+                    borderWidth: 1
+                }]
+            };
+            barChartInstance = new Chart(barChartCtx, {
+                type: 'bar',
+                data: barData,
+                options: barChartOptions,
+                plugins: [ChartDataLabels]
+            });
+            
+            document.getElementById('language-select').addEventListener('change', (event) => {
+                translatePage(event.target.value);
+            });
+
+            // Set default language on page load
+            translatePage('id');
+        });
+    </script>
+
+</body>
+</html>
